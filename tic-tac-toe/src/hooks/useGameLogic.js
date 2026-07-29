@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { calculateWinner, isDraw } from "../utils/gameUtils";
 
 export function useGameLogic() {
@@ -9,21 +9,21 @@ export function useGameLogic() {
   const winnerResult = calculateWinner(squares);
   const draw = isDraw(squares, winnerResult);
 
-  // Update scores whenever the game ends
-  useEffect(() => {
-    if (winnerResult) {
-      setScores(prev => ({ ...prev, [winnerResult.winner]: prev[winnerResult.winner] + 1 }));
-    } else if (draw) {
-      setScores(prev => ({ ...prev, draws: prev.draws + 1 }));
-    }
-  }, [winnerResult?.winner, draw]); // only fires when these change
-
   function handleSquareClick(index) {
     if (squares[index] || winnerResult || draw) return; // guard: filled, won, or drawn
     const newSquares = [...squares];
-    newSquares[index] = isXTurn ? "X" : "O";
+    const player = isXTurn ? "X" : "O";
+    newSquares[index] = player;
     setSquares(newSquares);
     setIsXTurn(!isXTurn);
+
+    // Calculate immediately to update scores without side effects
+    const nextWinner = calculateWinner(newSquares);
+    if (nextWinner) {
+      setScores(prev => ({ ...prev, [nextWinner.winner]: prev[nextWinner.winner] + 1 }));
+    } else if (isDraw(newSquares, nextWinner)) {
+      setScores(prev => ({ ...prev, draws: prev.draws + 1 }));
+    }
   }
   
   function resetGame() {
