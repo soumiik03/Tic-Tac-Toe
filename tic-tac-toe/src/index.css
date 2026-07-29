@@ -130,3 +130,100 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+/* Responsive spacing and layout focusing on media queries */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem; /* gap-7 */
+}
+
+.score-board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem; /* gap-6 */
+}
+
+.score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 8rem; /* w-32 */
+  height: 8rem; /* h-32 */
+  border-width: 3px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem; /* gap-4 */
+}
+
+.game-square {
+  position: relative;
+  width: 6rem; /* w-24 */
+  height: 6rem; /* h-24 */
+}
+
+@media (max-width: 640px) {
+  .game-container {
+    gap: 1.25rem;
+  }
+  .score-board {
+    gap: 1rem;
+  }
+  .score-card {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-width: 2.5px;
+  }
+  .score-card span:first-child {
+    font-size: 2rem;
+  }
+  .game-board {
+    gap: 0.75rem;
+  }
+  .game-square {
+    width: 5rem;
+    height: 5rem;
+  }
+  .game-square span {
+    font-size: 1.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .score-board {
+    gap: 0.75rem;
+  }
+  .score-card {
+    width: 5.5rem;
+    height: 5.5rem;
+    border-width: 2px;
+  }
+  .score-card span:first-child {
+    font-size: 1.5rem;
+  }
+  .score-card span:last-child {
+    font-size: 10px;
+    margin-top: 4px;
+  }
+  .game-board {
+    gap: 0.5rem;
+  }
+  .game-square {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+  .game-square span {
+    font-size: 1.5rem;
+  }
+}

@@ -18,7 +18,7 @@ export default function App() {
       <BackgroundRippleEffect />
 
       {/* Foreground game UI */}
-      <div className="relative z-10 flex flex-col items-center gap-7">
+      <div className="relative z-10 game-container">
 
         {/* Title */}
         <div className="text-center animate-fade-in-up px-4">

@@ -2,7 +2,7 @@ import Square from "./Square";
 
 export default function Board({ squares, handleSquareClick, winnerResult, isGameOver }) {
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="game-board">
       {squares.map((value, index) => (
         <Square
           key={index}

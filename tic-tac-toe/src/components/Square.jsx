@@ -8,8 +8,8 @@ export default function Square({ value, onClick, isWinning, isGameOver }) {
       aria-label={value ? `${value}` : "Empty"}
       className={[
         // base
-        "relative w-24 h-24 rounded-xl flex items-center justify-center",
-        "text-4xl font-black select-none transition-all duration-200",
+        "game-square rounded-xl flex items-center justify-center",
+        "font-black select-none transition-all duration-200",
         "border-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black",
 
         // winning state
